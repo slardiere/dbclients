@@ -17,7 +17,7 @@ CREATE TABLE contacts (
 	ct_telephone text,
 	ct_email text,
 	ct_fonction text,
-	cl_nom text REFERENCES clients ( cl_nom )
+	cl_nom text REFERENCES clients ( cl_nom ) ON UPDATE CASCADE
 ) ;
 
 CREATE TABLE prestations (
@@ -51,7 +51,7 @@ CREATE TABLE lignes_factures (
 
 
 -- Production d'un jeu de données
-\i db_clients_data.sql
+\ir db_clients_data.sql
 
 
 CREATE OR REPLACE VIEW factview AS
