@@ -15,22 +15,22 @@ values ('MonPay' ,'8, rue de la soupe, 83120 Douby Sur Var' ) --,'t')
 ;
 
 INSERT INTO contacts
-values ('Damien' , 'Testet'  , '0409443135'  , 'dtestet@monpay.biz'  , 'MonPay' )
-      ,('Thérèse' , 'Androt'  , '0409443154'  , 'tandrot@monpay.biz'  , 'MonPay' )
-      ,('Damien' , 'Lendrot'  , '0109323132'  , 'dlandrot@sp.com.biz'  , 'Société Particulière' )
-      ,('Sophie' , 'Estère'  , '0109323138'  , 'sestere@sp.com.biz'  , 'Société Particulière' )
-      ,('Vincent' , 'Aspic'  , '0309653176'  , 'vaspic@splfbc.fr'  , 'SPLFBC' )
-      ,('Caroline' , 'Lenpuis'  , '0309653143'  , 'clenpuis@splfbc.fr'  , 'SPLFBC' )
-      ,('Antoine' , 'Ramier'  , '0509323198'  , 'aramier@envreds.org'  , 'ENVREDS' )
-      ,('Astrid' , 'Neliera'  , '0509323943'  , 'aneliera@envreds.org'  , 'ENVREDS' )
-      ,('Joachim' , 'Deruche'  , '0243659165'  , 'jderuche@la-cotee.coop'  , 'La Côtée' )
-      ,('Anne' , 'Lordet'  , '0243659143'  , 'alordet@la-cotee.coop'  , 'La Côtée' )
-      ,('Henry' , 'Passeda'  , '0512658303'  , 'hpasseda@enrier.fr'  , 'Enrier' )
-      ,('Véronique' , 'Leto'  , '0512658305'  , 'vleto@enrier.fr'  , 'Enrier' )
-      ,('Charles' , 'D''Herrier'  , '0354219420'  , 'cdherrier@stereg.fr'  , 'S.T.E.R.E.G' )
-      ,('Madelaine' , 'Hercot'  , '0354219420'  , 'mhercot@stereg.fr'  , 'S.T.E.R.E.G' )
-      ,('Piotr' , 'Zurca'  , '0554016279'  , 'pzurca@frec-tis.com'  , 'FREC-TIS' )
-      ,('Clémence' , 'Dechanville'  , '0554016279'  , 'cdechanville@frec-tis.com'  , 'FREC-TIS' )
+values ('Damien'    , 'Testet'      , '0409443135' , 'dtestet@monpay.biz'        , 'Acheteur'   , 'MonPay' )
+      ,('Thérèse'   , 'Androt'      , '0409443154' , 'tandrot@monpay.biz'        , 'Comptable'  , 'MonPay' )
+      ,('Damien'    , 'Lendrot'     , '0109323132' , 'dlandrot@sp.com.biz'       , 'Acheteur'   , 'Société Particulière' )
+      ,('Sophie'    , 'Estère'      , '0109323138' , 'sestere@sp.com.biz'        , 'Comptable ' , 'Société Particulière' )
+      ,('Vincent'   , 'Aspic'       , '0309653176' , 'vaspic@splfbc.fr'          , 'Acheteur'   , 'SPLFBC' )
+      ,('Caroline'  , 'Lenpuis'     , '0309653143' , 'clenpuis@splfbc.fr'        , 'Comptable'  , 'SPLFBC' )
+      ,('Antoine'   , 'Ramier'      , '0509323198' , 'aramier@envreds.org'       , 'Acheteur'   , 'ENVREDS' )
+      ,('Astrid'    , 'Neliera'     , '0509323943' , 'aneliera@envreds.org'      , 'Comptable'  , 'ENVREDS' )
+      ,('Joachim'   , 'Deruche'     , '0243659165' , 'jderuche@la-cotee.coop'    , 'Acheteur'   , 'La Côtée' )
+      ,('Anne'      , 'Lordet'      , '0243659143' , 'alordet@la-cotee.coop'     , 'Comptable'  , 'La Côtée' )
+      ,('Henry'     , 'Passeda'     , '0512658303' , 'hpasseda@enrier.fr'        , 'Acheteur'   ,'Enrier' )
+      ,('Véronique' , 'Leto'        , '0512658305' , 'vleto@enrier.fr'           , 'Comptable'  ,'Enrier' )
+      ,('Charles'   , 'D''Herrier'  , '0354219420' , 'cdherrier@stereg.fr'       , 'Acheteur'   ,'S.T.E.R.E.G' )
+      ,('Madelaine' , 'Hercot'      , '0354219420' , 'mhercot@stereg.fr'         , 'Comptable'  ,'S.T.E.R.E.G' )
+      ,('Piotr'     , 'Zurca'       , '0554016279' , 'pzurca@frec-tis.com'       , 'Acheteur'   ,'FREC-TIS' )
+      ,('Clémence'  , 'Dechanville' , '0554016279' , 'cdechanville@frec-tis.com' , 'Comptable'  , 'FREC-TIS' )
 ;
 
 INSERT INTO prestations
@@ -39,7 +39,7 @@ select cl_nom, x + ( (random() * 10)::int * '1d'::interval ) as date_debut
      from clients, generate_series('1970-01-01'::date, current_date, '1w'::interval) x
 ),
 datesf as (
-select cl_nom, date_debut, date_debut + (random() * 5)::int * '1d'::interval as date_fin  from dates
+select cl_nom, date_debut, date_debut + ((random() * 4)::int + 1) * '1d'::interval as date_fin  from dates
 ),
 prest as (
 select * from (values ('Maintenance'),('Livraison'),('Enlevement'),('Autre'),('Consultation')) as t -- ,('Formation')
